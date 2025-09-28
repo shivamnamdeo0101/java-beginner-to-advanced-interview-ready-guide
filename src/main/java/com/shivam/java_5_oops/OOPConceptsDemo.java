@@ -10,7 +10,8 @@ WHAT: Class is a blueprint; Object is an instance of a class.
 WHY: To model real-world entities in a structured way.
 WHEN: Whenever you need modular, reusable code.
 HOW: Use 'class' keyword, create object with 'new'.
-RULES: Class name should be PascalCase; object names camelCase.
+RULES: Class name should be PascalCase; object names camelCase
+
 PROS: Reusability, scalability, maintainability.
 CONS: Slight overhead in memory compared to primitives.
 */
@@ -34,7 +35,17 @@ WHAT: Special methods to initialize objects.
 WHY: To give objects valid initial values.
 WHEN: At object creation.
 HOW: Same name as class, no return type, can overload.
-RULES: No return type, not static/final/abstract, auto-called with new.
+RULES:  No return type, not static/final/abstract, auto-called with new.
+
+        1.A private constructor is used in Singleton design patterns or utility
+        2.classes to prevent object creation outside the class.
+        3.In Java, this() is used to call another constructor of the same class, allowing constructor chaining.
+        4.If you define a parameterized constructor but do not define a no-argument constructor, Java does NOT provide a default constructor, leading to errors when trying to instantiate without parameters.
+        5.A constructor cannot be final because it is never inherited, and final is meant to prevent overriding.
+        6.In Java, when a subclass constructor is called, it automatically calls the superclass constructor first before executing its own body.
+
+
+
 PROS: Ensures initialization, can overload.
 CONS: Too many overloads can be confusing.
 */
