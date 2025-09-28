@@ -1,7 +1,5 @@
 # Java Beginner to Advanced – Interview Ready Guide 🚀
 
-FEW OF THE REF TAKEN FROM  - https://www.geeksforgeeks.org/java/java/
-
 A structured Java learning repository designed to take you from **beginner → advanced concepts** with clear **WHAT, WHY, WHEN, HOW** explanations, **rules, pros/cons**, and **real code examples**.
 
 Perfect for **interview prep** or brushing up on **core Java fundamentals**.
