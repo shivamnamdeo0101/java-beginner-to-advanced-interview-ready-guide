@@ -43,7 +43,7 @@ Each folder contains:
 1. Clone the repo
 
    ```bash
-   git clone https://github.com/<your-username>/java-beginner-to-advanced-interview-ready-guide.git
+   git clone https://github.com/shivamnamdeo0101/java-beginner-to-advanced-interview-ready-guide.git
    cd java-beginner-to-advanced-interview-ready-guide
    ```
 
