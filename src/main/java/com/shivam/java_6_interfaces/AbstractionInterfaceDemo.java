@@ -38,6 +38,10 @@ package com.shivam.java_6_interfaces;
 - A class can implement multiple interfaces (Java allows multiple inheritance via interfaces).
 - Abstract class can have fields and constructors; interfaces cannot have instance fields.
 - Methods in interface are public abstract by default.
+- By default, variables in an interface are public, static and final.
+- It supports loose coupling (classes depend on behavior, not implementation).
+- An interface in Java defines a set of behaviours that a class can implement, usually representing a CAN-DO relationship, but not always in every scenario.
+
 */
 
 // 6. PROS
