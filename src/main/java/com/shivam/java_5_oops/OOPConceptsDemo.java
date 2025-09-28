@@ -15,7 +15,7 @@ RULES: Class name should be PascalCase; object names camelCase
 PROS: Reusability, scalability, maintainability.
 CONS: Slight overhead in memory compared to primitives.
 */
-class Car {
+class CarClass {
     String brand;
     int speed;
 
@@ -125,7 +125,7 @@ RULES: Fields private, provide public getters/setters.
 PROS: Security, flexibility.
 CONS: More boilerplate code.
 */
-class BankAccount {
+class BankAccountDemo {
     private double balance;
 
     public double getBalance() { return balance; }
@@ -205,9 +205,9 @@ public class OOPConceptsDemo {
     public static void main(String[] args) {
 
         // Classes & Objects
-        Car car = new Car();
-        car.brand = "Tesla"; car.speed = 120;
-        car.drive();
+        CarClass CarClass = new CarClass();
+        CarClass.brand = "Tesla"; CarClass.speed = 120;
+        CarClass.drive();
 
         // Constructors
         Point p1 = new Point();
@@ -228,7 +228,7 @@ public class OOPConceptsDemo {
         cat.speak();
 
         // Encapsulation
-        BankAccount acc = new BankAccount();
+        BankAccountDemo acc = new BankAccountDemo();
         acc.deposit(500);
         System.out.println("Balance: " + acc.getBalance());
 
