@@ -1,0 +1,95 @@
+1️⃣ JavaScript Core
+- Variables & Scope (var, let, const)
+- Hoisting & Temporal Dead Zone (TDZ)
+- Closures & IIFE
+- this in different contexts (global, object, class, arrow)
+- Arrow functions & normal functions differences
+- Event Loop, Call Stack, Microtasks vs Macrotasks
+- Promises, async/await, Promise.all / Promise.race / Promise.allSettled
+- Currying & Partial application
+- Debounce & Throttle
+- Prototype, Prototype Chain, Inheritance
+- Classes & ES6 class inheritance
+- Module system (ES6 imports/exports, CommonJS)
+- Shallow vs Deep Copy
+- Object & Array destructuring, Spread & Rest operators
+- Optional chaining & Nullish coalescing (?., ??)
+- Type coercion (== vs ===)
+- Template literals
+- Symbols & Generators
+- Sets & Maps
+- Error handling (try/catch, custom errors)
+- JS memory, garbage collection, closures memory leaks
+- Event delegation & bubbling
+- Local storage / session storage / cookies basics
+- ES6+ features: default parameters, rest/spread, for…of, optional chaining
+
+2️⃣ React / Frontend
+
+- React fundamentals: JSX, Components (functional & class)
+- Props, State, Controlled & Uncontrolled components
+- Lifecycle methods (class) & useEffect (functional)
+- Hooks: useState, useEffect, useRef, useMemo, useCallback, useContext, useReducer
+- Context API vs Redux / Zustand / Recoil
+- Higher-order components (HOC), Render Props, Compound Components
+- React Router v6 (routing, nested routes, dynamic routes)
+- Forms: controlled, uncontrolled, validation
+- Virtual DOM, reconciliation, key importance
+- Performance optimization: memoization, lazy loading, code splitting, Suspense
+- Error boundaries & handling errors in React
+- React Query / SWR for data fetching
+- Event handling & synthetic events
+- Conditional rendering, list rendering, keys
+- Styling: CSS modules, styled-components, Tailwind, Emotion
+- Animations: Framer Motion, React Spring basics
+- Testing: Jest, React Testing Library basics
+- React StrictMode
+- State management patterns (lifting state, prop drilling vs context)
+
+3️⃣ Node.js / Backend
+
+- Node.js fundamentals: Event loop, single-threaded, async nature
+- Modules: CommonJS vs ES Modules
+- File system (fs) async vs sync
+- Streams & Buffers
+- EventEmitter
+- HTTP module, creating servers
+- Express.js: routing, middleware, error handling, request/response
+- REST API design principles
+- JWT & authentication strategies
+- Session & cookie management
+- CORS, headers, security best practices
+- Environment variables & dotenv
+- Async patterns: callbacks, promises, async/await, error handling
+- MongoDB + Mongoose: schema design, validation, querying, population
+- Redis / caching basics
+- WebSockets / Socket.IO basics
+- Logging & debugging
+- Testing: Jest, Supertest basics
+- Deployment basics: PM2, Docker, CI/CD pipelines
+
+4️⃣ Full-Stack / Integration
+
+- Connecting React frontend to Node.js backend
+- Axios / Fetch API: error handling, interceptors
+- State synchronization (frontend-backend)
+- Real-time communication (WebSocket, SSE)
+- File uploads & download (Multer, S3)
+- Handling CORS / Proxy issues
+- Authentication & Authorization flows
+- Input validation & sanitization (Joi, express-validator)
+- Performance tuning: DB queries, indexing, lazy loading frontend data
+- Security best practices: XSS, CSRF, SQL/NoSQL injection, helmet.js
+
+5️⃣ Optional / Advanced / Nice-to-Know
+
+- TypeScript basics & typing React/Node
+- GraphQL: queries, mutations, Apollo Client / Server
+- Microservices & REST vs GraphQL
+- CI/CD basics: Github Actions / Jenkins / Docker
+- Testing strategies: unit, integration, E2E (Cypress, Playwright)
+- Webpack / Vite / Babel basics
+- Design patterns: Singleton, Factory, Observer (Node/JS)
+- RxJS & reactive programming
+- Serverless functions (AWS Lambda / Netlify / Vercel)
+- Caching strategies & CDNs

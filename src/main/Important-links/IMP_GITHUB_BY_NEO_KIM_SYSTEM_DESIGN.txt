@@ -1,0 +1,35 @@
+GitHub repositories (star them):
+
+1 AI Localization
+An npm library, that makes React apps multilingual without rewriting the existing React components.
+Doesn't require extracting i18n keys, or wrapping text in <Translate /> tags.
+100% free and open-source.
+↳ https://dub.sh/Rys03Qd
+
+2 System design
+↳ https://lnkd.in/e7SUQ3ei
+Newsletter to help busy software engineers become good at system design 👇
+
+3 Public APIs
+↳ https://lnkd.in/epWSyzqs
+
+4 Tech interview handbook
+↳ https://lnkd.in/e7EjsJNF
+
+5 Coding interview university
+↳ https://lnkd.in/evJSNCPE
+
+6 Engineering leadership
+↳ https://lnkd.in/ePCzV3zF
+
+7 Freecodecamp
+↳ https://lnkd.in/e_4pA8xV
+
+8 Developer roadmaps
+↳ https://lnkd.in/e9MuB_Yg
+
+9 Path to senior engineer handbook
+↳ https://lnkd.in/exkJCxVi
+
+10 Free programming books
+↳ https://lnkd.in/eXAzAJ3M
