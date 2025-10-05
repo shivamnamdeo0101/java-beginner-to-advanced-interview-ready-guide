@@ -1,0 +1,29 @@
+@startuml
+!theme plain
+
+actor "JS Engine (Call Stack)" as Stack
+actor "Web API / Node API" as API
+actor "Microtask Queue" as MicroQ
+actor "Macrotask Queue" as MacroQ
+actor "Event Loop" as Loop
+
+Stack -> Stack: Run synchronous code\n(console.log("start"))
+Stack -> API: setTimeout(callback, 0)
+Stack -> MicroQ: Promise.then(callback)
+Stack -> Stack: Run synchronous code\n(console.log("end"))
+
+== Event Loop Cycle ==
+
+Loop -> Stack: Is Call Stack empty?
+Stack --> Loop: Yes
+
+Loop -> MicroQ: Check microtasks
+MicroQ -> Stack: Execute Promise callback\n(console.log("promise"))
+
+Loop -> MicroQ: Any more microtasks?
+MicroQ --> Loop: No
+
+Loop -> MacroQ: Take next macrotask
+MacroQ -> Stack: Execute setTimeout callback\n(console.log("timeout"))
+
+@enduml

@@ -93,3 +93,82 @@
 - RxJS & reactive programming
 - Serverless functions (AWS Lambda / Netlify / Vercel)
 - Caching strategies & CDNs
+
+
+
+Sure! Here’s a **curated list of SQL & Database interview questions** suitable for **3 years of experience**, covering **basic, intermediate, and advanced topics** including performance, CTEs, indexing, and practical scenarios:
+
+---
+
+# **1️⃣ SQL Basics**
+
+1. Difference between `INNER JOIN`, `LEFT JOIN`, `RIGHT JOIN`, `FULL OUTER JOIN`.
+2. Difference between `WHERE` and `HAVING` clauses.
+3. What is the difference between `GROUP BY` and `ORDER BY`?
+4. Difference between `DISTINCT` and `GROUP BY`.
+5. Difference between `UNION` and `UNION ALL`.
+6. What is a primary key vs foreign key vs unique key?
+
+---
+
+# **2️⃣ SQL Intermediate**
+
+7. What is a **CTE (Common Table Expression)** and when would you use it?
+8. Recursive CTE example to find **hierarchical data**.
+9. Explain **indexes** and how they improve query performance.
+10. Difference between **clustered** and **non-clustered indexes**.
+11. Explain **views** vs tables. Can views be updated?
+12. Difference between `TRUNCATE`, `DELETE`, and `DROP`.
+13. How does **auto-increment** work in SQL?
+14. Explain transactions and ACID properties.
+
+---
+
+# **3️⃣ SQL Advanced / Optimization**
+
+15. How to optimize **slow queries**?
+16. What are **subqueries** and correlated subqueries?
+17. Difference between **derived tables** and **CTEs**.
+18. What is a **window function**? Example: `ROW_NUMBER()`, `RANK()`.
+19. Explain **normalization vs denormalization**.
+20. What is a **foreign key constraint with cascade options**?
+21. Difference between **temporary tables** and **CTEs**.
+22. How does **index seek** differ from **index scan**?
+23. Explain **execution plan** in SQL Server/MySQL.
+
+---
+
+# **4️⃣ Practical / Scenario-Based**
+
+24. Find the **second highest salary** in a table.
+25. Write a query to find **duplicate records**.
+26. Write a query to **get the running total** of sales per day.
+27. Query to **pivot/unpivot data** in SQL.
+28. Query to get **employees with no manager** using self-join.
+29. How to **delete duplicate rows** but keep one record.
+30. How to **update multiple rows** based on a join with another table.
+
+---
+
+# **5️⃣ Misc / Fun Questions**
+
+31. Difference between `CHAR` and `VARCHAR`.
+32. Explain **foreign key indexing**: is it necessary?
+33. Explain **deadlocks** and how to resolve them.
+34. Difference between **stored procedure** and **function**.
+35. Explain **materialized view** vs **normal view**.
+
+---
+
+💡 **Tips for 3-Year Level:**
+
+* Be ready to **write queries on the spot**, especially with `JOINs`, `CTE`, and `aggregates`.
+* Know **indexing, execution plan, and performance optimization**.
+* Understand **transactions, ACID, and isolation levels**.
+* Practice **recursive queries** and **window functions**.
+
+---
+
+If you want, I can also make a **SQL cheat sheet with example queries** covering all these questions for **quick reference for interviews**.
+
+Do you want me to do that?

@@ -1,0 +1,44 @@
+@startuml
+actor User
+participant "Main Thread" as Main
+participant "JVM" as JVM
+participant "OS Kernel" as OS
+participant "Normal Thread[n]" as NT
+participant "Virtual Thread[n]" as VT
+database "RAM / Heap" as RAM
+
+User -> Main: Start Program
+
+Main -> JVM: Create 10000 Normal Threads
+loop For each Normal Thread
+    JVM -> OS: pthread_create request
+    OS -> RAM: Allocate 2 MB stack
+    OS -> JVM: Thread handle returned
+    JVM -> NT: run()
+    NT -> RAM: Execute task, local vars
+end
+
+note right of NT
+Max threads limited by:
+- OS limit (ulimit -u = 4000)
+- RAM (~24 GB / 2MB per thread = ~12k threads)
+Threads beyond limit fail:
+- OutOfMemoryError
+end note
+
+Main -> JVM: Create 100000 Virtual Threads
+loop For each Virtual Thread
+    JVM -> JVM: Allocate initial stack on heap (~8 KB)
+    JVM -> VT: run()
+    VT -> RAM: Execute task, grow stack dynamically if needed
+end
+
+note right of VT
+Virtual Threads:
+- Multiplexed on limited OS carrier threads (~50-100)
+- Memory per thread dynamic (heap managed)
+- 100k threads ≈ 800 MB (if shallow tasks)
+- Millions of threads possible
+end note
+
+@enduml

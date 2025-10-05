@@ -1,0 +1,21 @@
+@startuml
+
+participant "FE" as FE
+participant "BE" as BE
+participant "PAY" as PAY
+
+FE -> BE: Create Order (details filled)
+BE -> FE: Return Order ID (for payment reference)
+
+alt UPI Payment
+    FE -> BE: Request for payment
+    BE -> PAY: Make payment(100, orderId)
+    PAY -> BE: Payment success/failure response
+    BE -> FE: Notify payment result
+else Cash on Delivery
+    FE -> BE: Request for COD
+    BE -> BE: Process COD internally
+    BE -> FE: Notify COD confirmation
+end
+
+@enduml

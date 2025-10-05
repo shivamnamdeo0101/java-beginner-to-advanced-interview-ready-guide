@@ -67,6 +67,11 @@
     PROS: Memoization, private state, callbacks
     CONS: Can cause memory leaks if references persist
     KEY INSIGHTS: Closures are powerful for stateful functions
+
+    A function that remembers the variables from the scope in which it was created, even if that outer function has finished executing.
+    Inner function + outer function’s variables = closure.
+    Closure = function + preserved lexical scope.
+
     */
     {
         function outer() {
@@ -104,6 +109,52 @@
         };
         obj.arrow();  // Arrow this: undefined
         obj.normal(); // Normal this: Shivam
+
+
+        function Person(name) {
+            this.name = name;
+
+            //take the this.name
+            ()=>{
+                // Regular functions get their this from how they are called.
+                // Arrow functions capture this lexically (from the surrounding scope)
+            }
+            //Arrow function
+            setTimeout(()=> {
+                console.log("Hello " + this.name);
+            }, 1000);
+
+            //traditional
+            setTimeout(function(){
+                console.log("Hello " + this.name); //undefined
+            }, 1000);
+
+            //using self
+            const self = this;
+            setTimeout(function() {
+                console.log("Hello " + self.name);
+            }, 1000);
+
+            //using bind
+            setTimeout(function() {
+                console.log("Hello " + this.name);
+            }.bind(this), 1000);
+
+        }
+
+        const p = new Person("Shivam");
+
+        //-------------------------------------------//
+        // Shorter syntax → easy for callbacks
+        const arr = [1,2,3];
+        const double = arr.map(function(n){ //map will return a new arr
+            return n*2;
+        })
+        console.log(double)
+        console.log(arr)
+        arr.forEach((n)=>console.log(n)) // perform operation on each n
+        const arr2 = arr.map((n)=> n*2)
+        console.log(arr2)
     }
 
     // ==========================
@@ -127,6 +178,47 @@
         obj.f(); // Obj
         class Person{ constructor(name){this.name=name;} greet(){ console.log("Class this:", this.name); } }
         new Person("Class").greet(); // Class
+
+
+    }
+
+    {
+
+        class Person{
+            constructor(name){
+                this.name = name;
+            }
+            greet(){
+                console.log("greet called",this.name);
+            }
+        }
+
+        new Person("Shivam").greet()
+
+        function outer(){
+            return function inner(){
+                console.log("inner called")
+            }
+        }
+
+        const inner = outer()
+        inner()
+
+        outer.inner // undefined
+        console.log(outer.inner)
+
+        function Person2(name){
+            console.log("Person2",name)
+        }
+
+        Person2("Shv")
+        const p = Person2("Shv")
+        // p(); ---Error p is not a function
+
+        // Hoisting
+        // Function is hoisted
+        // Class is not hoisted (cannot use before declaration)
+
     }
 
     // ==========================
@@ -141,7 +233,75 @@
     PROS: Cleaner than .then; easier error handling
     CONS: Sequential awaits block independent ops
     KEY INSIGHTS: Use Promise.all for parallel execution
+
+    A Promise is an object that represents the eventual result of an asynchronous operation.
+    It can be in one of three states:
+    | State     | Meaning                                       |
+    | --------- | --------------------------------------------- |
+    | Pending   | Initial state, operation not completed yet    |
+    | Fulfilled | Operation completed successfully, has a value |
+    | Rejected  | Operation failed, has a reason/error          |
+
+    Why use Promises?
+    Avoid callback hell (nested callbacks).
+    Makes async code more readable.
+    Can chain multiple async operations:
+
+    Promise = async operation wrapper
+    States: pending → fulfilled/rejected
+    Use .then, .catch, .finally to handle results
+    Arrow functions + Promises = cleaner async code
+
+
+
     */
+
+    {
+
+       const promise = new Promise((res,rej)=>{
+           console.log("Promise started") //1.
+           setTimeout(()=>{
+               if(true){
+                   res("Success")
+               }else{
+                   rej("Fail")
+               }
+           },1000)
+           console.log("Promise ended") //2
+       })
+       promise
+       .then((res)=>{
+           console.log("result1",res); //3 if success
+           return res + " shivam".
+       })
+       .then((res)=>{
+           console.log("ressult2",res); //4 if success
+           return res
+       })
+       .catch((err)=>{
+           console.log("Error",err); //3 if fails
+       })
+       .finally(()=>{
+           console.log("finally") // last both cases
+       })
+
+
+//        Promise started
+//        Promise ended
+//        Error Fail
+//        finally undefined
+//
+//        === Code Execution Successful ===
+
+//| Method               | Resolves when                          | Rejects when                             |
+//| -------------------- | -------------------------------------- | ---------------------------------------- |
+//| `Promise.all`        | All promises fulfilled                 | Any promise rejects                      |
+//| `Promise.race`       | First promise settles (resolve/reject) | First promise settles (resolve/reject)   |
+//| `Promise.allSettled` | All promises settled                   | Never rejects (always returns statuses)  |
+//| `Promise.any`        | First promise fulfilled                | All promises rejected → `AggregateError` |
+
+
+    }
     {
         const fakeApi = id => new Promise(res => setTimeout(() => res(`Data ${id}`), 500));
         async function fetchData() {
@@ -152,6 +312,72 @@
         await fetchData();
         // Output: Fetching...
         // Received: Data 1
+    }
+
+    {
+//        Use Promises if you just need quick chaining.
+//        Use async/await for more readable, sequential, and maintainable code.
+
+//   | Feature                | Promises (`.then`)                   | Async/Await                           |
+//   | ---------------------- | ------------------------------------ | ------------------------------------- |
+//   | **Syntax**             | `.then().catch().finally()`          | `await`, looks synchronous            |
+//   | **Error Handling**     | `.catch()`                           | `try/catch`                           |
+//   | **Chaining**           | Explicit chaining (`.then().then()`) | Sequential `await`s (cleaner)         |
+//   | **Parallel Execution** | Harder (need `Promise.all`)          | Use `await Promise.all([...])` easily |
+//   | **Readability**        | Can get messy with nesting           | Much cleaner and linear               |
+//   | **Underlying**         | Core async abstraction in JS         | Just syntax sugar on top of Promises  |
+
+
+         Promise.all([fetchData(), fetchData()])
+          .then(([res1, res2]) => {
+            console.log(res1, res2);
+          });
+
+        async function getParallel() {
+          const [res1, res2] = await Promise.all([fetchData(), fetchData()]);
+          console.log(res1, res2);
+        }
+        getParallel();
+
+
+
+        // Helper function to simulate async tasks
+        const createTask = (name, shouldResolve, delay) => new Promise((res, rej) => {
+          setTimeout(() => {
+            if (shouldResolve) {
+              res(`${name} ✅`);
+            } else {
+              rej(`${name} ❌`);
+            }
+          }, delay);
+        });
+
+        // Define promises
+        const p1 = createTask("Task 1", true, 500);
+        const p2 = createTask("Task 2", true, 1000);
+        const p3 = createTask("Task 3", false, 800);
+
+        // ------------------- Promise.all Success -------------------
+        Promise.all([p1, p2])
+          .then(res => console.log("Promise.all:", res))
+          .catch(err => console.log("Promise.all Error:", err));
+
+        // ------------------- Promise.race First Success -------------------
+        Promise.race([p1, p2, p3])
+          .then(res => console.log("Promise.race:", res))
+          .catch(err => console.log("Promise.race Error:", err));
+
+        // ------------------- Promise.allSettled Success + Fail all status -------------------
+        Promise.allSettled([p1, p2, p3])
+          .then(res => console.log("Promise.allSettled:", res));
+
+        // ------------------- Promise.any Any success-------------------
+        Promise.any([p1, p3])
+          .then(res => console.log("Promise.any:", res))
+          .catch(err => console.log("Promise.any Error (All rejected):", err));
+
+
+
     }
 
     // ==========================
@@ -305,6 +531,8 @@
         // Output: Debounce: World
     }
 
+//    Throttle = run at most once every X ms.
+//    Debounce = run only after X ms of silence (no calls).
     // ==========================
     // 14️⃣ THROTTLE
     // ==========================
@@ -345,6 +573,16 @@
     PROS: Deep prevents shared reference bugs
     CONS: Deep expensive; functions lost
     KEY INSIGHTS: Know when to use each
+
+    | Feature            | Shallow Copy                                | Deep Copy                                  |
+    | ------------------ | ------------------------------------------- | ------------------------------------------ |
+    | **Definition**     | Copies only 1st-level properties            | Copies all levels (nested too)             |
+    | **Nested Objects** | Still linked to original (reference shared) | Independent clone                          |
+    | **Performance**    | Faster (less memory)                        | Slower (more memory, but safe)             |
+    | **Examples**       | `Object.assign({}, obj)`, `{ ...obj }`      | `structuredClone(obj)`, `_.cloneDeep(obj)` |
+
+ Deep Copy
+Use structuredClone in modern JS, or lodash.cloneDeep in production.
     */
     {
         const obj = {a:1, b:{c:2}};
@@ -353,6 +591,37 @@
         obj.b.c = 99;
         console.log("Shallow:", shallow.b.c); // 99
         console.log("Deep:", deep.b.c);       // 2
+    }
+
+    {
+
+        // Top-level values copied
+        // ❌ Nested objects still point to the same reference
+        const original = {
+          name: "Shivam",
+          address: { city: "Indore" }
+        };
+
+        const shallow = { ...original }; // spread operator (shallow copy)
+
+        // Modify nested object
+        shallow.address.city = "Bhopal";
+
+        console.log(original.address.city); // "Bhopal" ❌ also changed!
+        console.log(shallow)
+
+        const orig = {
+          name: "Shivam",
+          address: { city: "Indore" }
+        };
+
+        const deep = JSON.parse(JSON.stringify(orig));
+
+        deep.address.city = "Bhopal";
+
+        console.log(orig.address.city); // "Indore" ✅ unaffected
+        console.log(deep)
+
     }
 
     // ==========================
@@ -517,6 +786,7 @@
     CONS: `Promise.all` fails if any promise rejects; need try/catch with async/await
     KEY INSIGHTS: Use async/await with Promise.all for readability
     */
+
 
     // Example: Single Promise
     const promise1 = new Promise((resolve, reject) => {

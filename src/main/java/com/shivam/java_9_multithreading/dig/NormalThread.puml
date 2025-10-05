@@ -1,0 +1,25 @@
+@startuml
+actor User
+
+participant "Weather App" as app
+participant "Weather-Cache" as cache
+participant "Weather-SVC" as svc
+participant "Open Weather API" as api
+
+User -> app: Request for weather forecast
+app -> cache: Call cache API
+
+alt CACHE HIT
+    cache -> cache: Check cache
+    cache -> app: Return cached data
+    app -> User: Response Weather forecast
+else CACHE MISS
+    cache -> svc: Request data
+    svc -> api: Fetch latest data from Open Weather API
+    api -> svc: Return data
+    svc -> cache: Store data in cache
+    cache -> app: Return data
+    app -> User: Response Weather forecast
+end
+
+@enduml
